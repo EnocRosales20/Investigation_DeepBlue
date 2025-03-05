@@ -2,7 +2,7 @@
 
 **Tema:** Incident Response
 
-![image.png](image.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%200.png)
 
 **Escenario:**
 
@@ -12,7 +12,7 @@ Se le han proporcionado las exportaciones de registros Security.evtx y System.ev
 
 **¿Puedes verificar estos hallazgos?**
 
-![image.png](image%201.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%201.png)
 
 # Presentación de investigación
 
@@ -20,7 +20,7 @@ Empezamos:
 
 Damos click en “Start Investigation” y se abrira nuesta maquina virtual donde trabajaremos.
 
-![image.png](def98322-a1e5-468f-b45e-144b0a58ea5e.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%202.png)
 
 ### 1. Usando DeepBlueCLI, investigue el registro de seguridad recuperado (Security.evtx). ¿Qué cuenta de usuario ejecutó GoogleUpdate.exe?
 
@@ -38,9 +38,9 @@ cd investigation
 ls  #para ver los archivos dentro
 ```
 
-![image.png](28105aa8-fedc-47a8-b0b5-2c07d791b661.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%203.png)
 
-![image.png](d8958eb5-0d70-4c99-b9d1-56ae64fd3e14.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%204.png)
 
 Entramos al archivo DeepBlueCLI-master:
 
@@ -50,11 +50,11 @@ ls
 .\DeepBlue.ps1 ..\security.evtx
 ```
 
-![image.png](591e69d6-a69a-467c-8f5b-9927621b278f.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%205.png)
 
  Buscamos el usuario que ejecuto GoogleUpdate.exe
 
-![image.png](a26312dc-6925-4f3f-833e-66e9c4dd69b0.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%206.png)
 
 **Respuesta:** Mike Smith
 
@@ -66,17 +66,17 @@ Meterpreter es una carga útil de ataque Metasploit que proporciona un shell int
 
 Buscamos Meterpreter y encontramos la hora:
 
-![image.png](d53bc011-4154-45c1-9b4b-529bd4474bd4.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%207.png)
 
 **Respuesta:** 4/10/2021 10:48:14 AM
 
 ### 3. Usando DeepBlueCLI investigue el registro System.evtx recuperado. ¿Cuál es el nombre del servicio sospechoso creado?
 
-![image.png](image%202.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%208.png)
 
 Como nos pide el nombre del archivo sospechoso lo encontramos despues de “echo”:
 
-![image.png](6e34d883-f460-420d-9e10-a1698e9cbc72.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%209.png)
 
 **Respuesta:** rztbzn
 
@@ -84,23 +84,23 @@ Como nos pide el nombre del archivo sospechoso lo encontramos despues de “echo
 
 Abrimos el Visor de Eventod que se encuentra en la carpeta Investigation:
 
-![image.png](4d2fc278-9c85-44e3-a017-3e0694cef2c9.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2010.png)
 
 Hacemos click el Open Saved log para poder abrir el archivo “Security” y ver su contenido
 
-![image.png](14da3262-5a20-4a54-b56b-3101aa8f1511.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2011.png)
 
 Ya abierto …
 
-![image.png](b2e1e4c9-72fe-4939-8cef-df10aeebdf46.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2012.png)
 
 Hacemos click en “Filter Current Log ..” para poder filtrarlo por el dia y hora que nos dice
 
-![image.png](2892022f-7593-4934-ae71-56a81845ca98.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2013.png)
 
 Ya filtrado , buscamos el ejecutable y el usuario que nos pide
 
-![image.png](731d3202-3202-4b03-973a-0f90ae597875.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2014.png)
 
 **Respuesta:** Mike Smith ,  serviceupdate.exe
 
@@ -108,11 +108,11 @@ Ya filtrado , buscamos el ejecutable y el usuario que nos pide
 
 Filtramos el dia y las horas que nos dice el enunciado .. 
 
-![image.png](c0af51ce-3229-4829-9e42-cc3b55f61eba.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2015.png)
 
  Buscamos y encontramos Process Command Line , entonces obtenemos la respuesta.
 
-![image.png](0e9cb702-6c23-41cc-a9be-4b59be443405.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2016.png)
 
 **Respuesta:** net user ServiceAct/add
 
@@ -120,11 +120,11 @@ Filtramos el dia y las horas que nos dice el enunciado ..
 
 Buscamos los grupos locales que nos piden. Estas se encunatran en el mismo intervalo de horas que en la pregunta 5.
 
-![image.png](b0f71b57-456e-4854-9f66-0a237f3b32af.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2017.png)
 
 Buscamos y encontramos los localgroup …
 
-![image.png](3a51e862-3d9d-413b-9293-c9b5a2cb3f63.png)
+![](https://github.com/EnocRosales20/Investigation_DeepBlue/blob/main/images/image%2018.png)
 
 Respuesta: administrators, remote desktop users
 
